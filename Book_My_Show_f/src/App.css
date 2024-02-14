@@ -1,0 +1,11 @@
+.card{
+  margin-right:50px;
+}
+
+.carousel-inner .carousel-control-prev{
+  display: none;
+}
+.nav-link-dark {
+  color: #333; /* Change the color to your preferred dark color */
+  /* Add any other styles you want for the darkened links */
+}
