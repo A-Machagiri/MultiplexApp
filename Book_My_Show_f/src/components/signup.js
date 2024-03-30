@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import "./Register.css";
 const Register = () => {
   const [name, setName] = useState("");
@@ -11,22 +11,25 @@ const Register = () => {
   const [address, setAddress] = useState("");
   const [answer, setAnswer] = useState("");
   const navigate = useNavigate();
-
+  
   // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/auth/register", {
-        name,
-        email,
-        password,
-        phone,
-        address,
-        answer,
-      });
+      const res = await axios.post(
+        "http://localhost:5000/register", // Update this URL
+        {
+          name,
+          email,
+          password,
+          phone,
+          address,
+          answer,
+        }
+      );
       if (res && res.data.success) {
         toast.success(res.data && res.data.answer);
-        navigate("/login");
+        // navigate("/login");
       } else {
         toast.error(res.data.answer);
       }
@@ -35,8 +38,9 @@ const Register = () => {
       toast.error("Something went wrong");
     }
   };
-  console.log(process.env.REACT_APP_API);
   
+  console.log(process.env.REACT_APP_API);
+
   return (
     <div>
       <div className="form-container" style={{ minHeight: "90vh" }}>
