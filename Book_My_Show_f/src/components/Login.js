@@ -39,11 +39,8 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = async () => {
-    // You can send a request to your server to authenticate the user here
-    // For example, using Axios or Fetch to make an API call
-
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/auth/login", { email, password });
+      const res = await axios.post("http://localhost:5000/login", { email, password });
       toast.success("Logged in")
       navigate("/movies");
       console.log(res);
